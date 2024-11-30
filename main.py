@@ -31,5 +31,5 @@ def previsao():
         return jsonify({"erro": str(e)}), 400
 
 if __name__ == "__main__":
-    carregar_modelo('models/RandomForstPredictionBitcoin.pkl')  # Carrega o modelo antes de rodar o servidor
+    carregar_modelo('models/modelo30minutotreinado.pkl')  # Carrega o modelo antes de rodar o servidor
     app.run(host="0.0.0.0", port=5000, debug=True)
