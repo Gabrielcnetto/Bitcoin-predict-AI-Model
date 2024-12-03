@@ -12,11 +12,14 @@ def carregar_modelo(caminho):
     print("Modelo carregado!")
 
 def prever_preco_btc(dados):
-    dados_df = pd.DataFrame([dados], columns=['Open', 'High', 'Low', 'Close', 'Volume', 'RSI', 'EMA12', 'EMA26', 'MACD', 'MACDSignal', 'BOLMiddle', 'BOLUpper', 'BOLLower', 'MAVOL1', 'MAVOL2', 'Year', 'Month', 'Day', 'DayOfWeek', 'Hour', 'Minute']
-)
+    dados_df = pd.DataFrame([dados], columns=[
+        'Open', 'High', 'Low', 'Volume', 'RSI', 'EMA', 'BOL_middle', 'BOL_std',
+        'BOL_upper', 'BOL_lower', 'MAVOL1', 'MAVOL2', 'EMA12', 'EMA26', 'MACD', 'MACD_signal',
+        'Year', 'Month', 'Day', 'Day_of_week', 'Hour', 'Minute'
+    ])
     
     previsao = modelo.predict(dados_df)
-    return float(previsao[0])
+    return previsao[0]
 
 @app.route('/previsao', methods=['POST'])
 def previsao():
@@ -28,5 +31,5 @@ def previsao():
         return jsonify({"erro": str(e)}), 400
 
 if __name__ == "__main__":
-    carregar_modelo('models/Novomodelo3omintreinado.pkl')  # Carrega o modelo antes de rodar o servidor
+    carregar_modelo('models/modelo30minutotreinado.pkl')  # Carrega o modelo antes de rodar o servidor
     app.run(host="0.0.0.0", port=5000, debug=True)
