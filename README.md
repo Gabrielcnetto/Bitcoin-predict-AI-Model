@@ -1,4 +1,4 @@
-# previsaoBTCapi
+# Bitcoin-predict-AI-Model
  
 Bitcoinpredict AI Model é um modelo de Machine Learning treinado com toda a série histórica do Bitcoin, utilizando dados de preço, volume, indicadores técnicos e informações temporais para predizer o valor do BTC na próxima hora.
 
